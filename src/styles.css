@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    background-color: rgba(3,225, 127, 25);
+    display: flex; justify-content: center; align-items: center; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+
+}
+app-root{
+    box-shadow: 3px 5px 8px rgba(72, 60, 60, 0.8);
+}
