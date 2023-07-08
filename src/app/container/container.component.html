@@ -1,19 +1,25 @@
+<!-- Material is used for styling -->
 <div class="curr">
     <div class="select_inp">
-        <select name="select_inp" id="select_inp">
-            <option>Input Currency</option>
+        <label for="select_inp">From:</label>
+        <!-- using ngModel for two way binding -->
+        <select name="select_inp" id="select_inp" [(ngModel)]="fromCountry">
+            <option *ngFor="let currency of currencies" [value]="currency.code">{{ currency.code }}</option>
         </select>
     </div>
     <div class="select_out">
-        <select name="select_out" id="select_out">
-            <option>Output Currency</option>
+        <label for="select_inp">To:</label>
+        <!-- using ngModel for two way binding -->
+        <select name="select_out" id="select_out" [(ngModel)]="toCountry">
+            <option *ngFor="let currency of currencies" [value]="currency.code">{{ currency.code }}</option>
         </select>
     </div>
 </div>
 <div class="out">
     <div class="currency">
-        <input type="text" id="inp_currency" placeholder="Enter Amount to convert">
-        <input type="text" disabled id="output">
+        <input type="text" id="inp_currency" [(ngModel)]="amount" placeholder="Enter Amount to convert" >
+        <input type="text" disabled id="output" [(ngModel)]="output">
     </div>
-    <button #convert>Convert</button>
+    <!-- Calling convert() function when the button is clicked -->
+    <button  (click)="convert()">Convert</button>
 </div>

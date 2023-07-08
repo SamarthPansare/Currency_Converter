@@ -2,10 +2,13 @@
 
 html, body { height: 100%; }
 body { 
-    background-color: rgba(3,225, 127, 25);
+    /* giving background colour as linear gradient */
+    background-image: linear-gradient(to bottom right, skyblue, rgb(40, 235, 131));
+    /* making body a flexbox so we can arrange the component to center */
     display: flex; justify-content: center; align-items: center; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 
 }
 app-root{
-    box-shadow: 3px 5px 8px rgba(72, 60, 60, 0.8);
+    /* Applying shadow property to app-root container */
+    box-shadow: 3px 5px 8px rgba(72, 60, 60, 3);
 }

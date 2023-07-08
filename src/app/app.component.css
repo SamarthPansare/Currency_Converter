@@ -1,7 +1,12 @@
-h1{
+/* Making the title to appear at the center  */
+h1 {
+    font-weight: 600;
+    font-size: 30px;
+    padding: 10px;
     text-align: center;
 }
-app-container{
+/* Making the container component flexbox */
+app-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
