@@ -37,31 +37,39 @@ export class ContainerComponent {
     );
   }
 
-  // This function will be called when the button is clicked
-  convert(){
-    console.warn(this.fromCountry,this.toCountry,this.amount);
 
+
+  convert(){
+    console.warn(this.fromCountry, this.toCountry, this.amount);
+  
     // Calling the getCurrencyRates function of the service which gives the rates of the all currencies with respect to base currency.
     // Here the base currency is is the fromCountry.
-    this.service.getCurrencyRates(this.fromCountry).subscribe(
+    this.service.getCurrencyRates(this.fromCountry, this.toCountry, this.amount.toString()).subscribe(
       (response: any) => {
+        // Parse the response 
+          // Calculate the exact conversion result
+        this.output = this.amount * response;
 
-        // Response gives object containing 5 entries amongst them entry having the key "rates" contains the rate conversion values
-        this.rates = response["rates"];
-        console.warn(this.rates);
-
-        // Accessing the rate of the currency entered by user with respect to base currency.
-        console.warn(this.rates[<any>this.toCountry]);
-
-        // Multiplying the amount with rate obtained to gain the conversion. And assigning it to the output so can be shown as a result
-        this.output = this.amount*this.rates[<any>this.toCountry];
+        const responseBody = response.body;
+        console.log(response);
+        // Check if the response body exists and contains the conversion result
+        if (responseBody && responseBody.success) {
+          // Get the exact conversion rate from the response body
+          const conversionRate = responseBody.value;
+  
+          
+        } else {
+          // Handle the case where the response body is missing or the conversion failed
+          console.error('Conversion failed or invalid response.');
+        }
       },
       (error) => {
         console.error(error);
         // Handle the error appropriately
       }
     );
-
   }
   
+
+
 }
